@@ -297,7 +297,7 @@ if nome_base_luck is not None:
 
         data_final = periodo[1]
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='IN') & 
@@ -332,7 +332,7 @@ if nome_base_luck is not None:
 
         st.subheader('TRF OUT')
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='OUT') & 
@@ -367,7 +367,7 @@ if nome_base_luck is not None:
 
         st.subheader('Passeios')
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico'].isin(['TOUR', 'TRANSFER'])) & 
@@ -410,7 +410,7 @@ if nome_base_luck is not None:
 
         data_final = periodo[1]
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='IN') & 
@@ -459,7 +459,7 @@ if nome_base_luck is not None:
 
         data_final = periodo[1]
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='OUT') & 
@@ -504,7 +504,7 @@ if nome_base_luck is not None:
 
         st.subheader('Passeios')
 
-        if len(st.session_state.excluir_cld)==1:
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))==1:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico'].isin(['TOUR', 'TRANSFER'])) & 
