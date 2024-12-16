@@ -20,7 +20,7 @@ def gerar_df_phoenix(vw_name, base_luck):
     conexao = mysql.connector.connect(**config)
     cursor = conexao.cursor()
 
-    request_name = f'SELECT `Data Execucao`, `Tipo de Servico`, `Status do Servico`, `Status da Reserva`, `Servico`, `Total ADT`, `Total CHD`, `Parceiro` FROM {vw_name}'
+    request_name = f'SELECT `Data Execucao`, `Tipo de Servico`, `Status do Servico`, `Status da Reserva`, `Servico`, `Total ADT`, `Total CHD`, `Parceiro`, `Observacao` FROM {vw_name}'
 
     # Script MySql para requests
     cursor.execute(
