@@ -248,6 +248,9 @@ if nome_base_luck is not None:
             
             excluir_cld = st.multiselect('Excluir reservas com CLD na observação', ['Sim'], key='excluir_cld', 
                                         default=list(filter(lambda x: x != '', st.session_state.df_config['Excluir CLD'].tolist())))
+
+            excluir_cortesia = st.multiselect('Excluir reservas com CORTESIA na observação', ['Sim'], key='excluir_cortesia', 
+                                        default=list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))
             
             st.session_state.filtrar_servicos_geral = []
 
@@ -261,7 +264,7 @@ if nome_base_luck is not None:
 
             with st.spinner('Salvando Configurações...'):
 
-                lista_escolhas = [filtrar_status_servico, filtrar_status_reserva, filtrar_colunas_vazias, filtrar_servicos_in, filtrar_servicos_tt, excluir_cld]
+                lista_escolhas = [filtrar_status_servico, filtrar_status_reserva, filtrar_colunas_vazias, filtrar_servicos_in, filtrar_servicos_tt, excluir_cld, excluir_cortesia]
 
                 st.session_state.df_config = pd.DataFrame({f'Coluna{i+1}': pd.Series(lista) for i, lista in enumerate(lista_escolhas)})
 
@@ -307,6 +310,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='IN')].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
@@ -342,6 +349,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='OUT')].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
@@ -377,6 +388,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico'].isin(['TOUR', 'TRANSFER']))].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
@@ -420,6 +435,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='IN')].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
@@ -469,6 +488,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico']=='OUT')].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
@@ -514,6 +537,10 @@ if nome_base_luck is not None:
 
             df_mapa_filtrado = st.session_state.mapa_router[(st.session_state.mapa_router['Data Execucao'] >= data_inicial) & (st.session_state.mapa_router['Data Execucao'] <= data_final) & 
                                                             (st.session_state.mapa_router['Tipo de Servico'].isin(['TOUR', 'TRANSFER']))].reset_index(drop=True)
+
+        if len(list(filter(lambda x: x != '', st.session_state.df_config['Excluir CORTESIA'].tolist())))==1:
+
+            df_mapa_filtrado = df_mapa_filtrado[(~df_mapa_filtrado['Observacao'].str.upper().str.contains('CORTESIA', na=False))].reset_index(drop=True)
         
         df_mapa_filtrado['Paxs Totais'] = df_mapa_filtrado['Total ADT'] + df_mapa_filtrado['Total CHD']
 
